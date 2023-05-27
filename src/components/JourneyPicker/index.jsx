@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import mapImage from "./img/map.svg";
 import "./style.css";
 
 const CityOptions = ({ cities }) => {
@@ -36,9 +35,6 @@ export const JourneyPicker = ({ onJourneyChange }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("fromCity", fromCity);
-    console.log("toCity", toCity);
-    console.log("date", date);
 
     if (!fromCity || !toCity || !date) {
       alert("všechny položky musí být vyplněny");
@@ -104,7 +100,7 @@ export const JourneyPicker = ({ onJourneyChange }) => {
             </button>
           </div>
         </form>
-        <img className="journey-picker__map" src={mapImage} />
+        <img className="journey-picker__map" src="/map.svg" />
       </div>
     </div>
   );
