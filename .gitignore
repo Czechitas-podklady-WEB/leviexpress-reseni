@@ -1,6 +1,7 @@
 # Ignore the package-lock.json to prevent conflicts when collaborating
 
-package-lock.json
+# Lockfile způsobuje komplikace při nasazení na GitHub Pages
+# package-lock.json
 
 # Logs
 logs
