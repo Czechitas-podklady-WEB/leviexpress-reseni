@@ -23,7 +23,7 @@ export const Home = () => {
       },
       body: JSON.stringify({
         action: "create",
-        seat: journey.autoSeat,
+        seat: userSeat,
         journeyId: journey.journeyId,
       }),
     })
