@@ -1,16 +1,27 @@
-import { Seat } from "../Seat";
+import { SeatRow } from "../SeatRow";
 import "./style.css";
 
 export const SeatPicker = () => {
+  const testRow = [
+    {
+      number: 33,
+      isOccupied: false,
+    },
+    {
+      number: 29,
+      isOccupied: true,
+    },
+    {
+      number: 25,
+      isOccupied: false,
+    },
+  ];
+
   return (
     <div className="seat-picker container">
       <h2>Vyberte sedadlo</h2>
       <div className="seats">
-        <div className="seat-row">
-          <Seat number={1} />
-          <Seat number={17} />
-          <Seat number={33} />
-        </div>
+        <SeatRow row={testRow} />
       </div>
     </div>
   );
