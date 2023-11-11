@@ -7,10 +7,12 @@ import "./style.css";
 
 export const HomePage = () => {
   const [journey, setJourney] = useState(null);
+  const [userSeat, setUserSeat] = useState(null);
   const navigate = useNavigate();
 
   const handleJourneyChange = (selectedJourney) => {
     setJourney(selectedJourney);
+    setUserSeat(selectedJourney.autoSeat)
   };
 
   const handleBuy = async () => {
@@ -46,7 +48,7 @@ export const HomePage = () => {
           <SeatPicker
             seats={journey.seats}
             journeyId={journey.journeyId}
-            selectedSeat={journey.autoSeat}
+            selectedSeat={userSeat}
           />
           <div className="controls container">
             <button className="btn btn--big" type="button" onClick={handleBuy}>
