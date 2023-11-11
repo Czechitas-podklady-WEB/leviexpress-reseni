@@ -63,8 +63,7 @@ export const JourneyPicker = ({ onJourneyChange }) => {
     }
     const data = await resp.json();
     const journey = data.results;
-    //TODO
-    console.log("Nalezený spoj:", journey);
+    onJourneyChange(journey)
   };
 
   return (
