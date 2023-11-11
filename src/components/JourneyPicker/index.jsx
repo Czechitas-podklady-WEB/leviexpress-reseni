@@ -52,19 +52,30 @@ export const JourneyPicker = ({ onJourneyChange }) => {
     fetchDates();
   }, []);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    //TODO
-    console.log(
-      `Uživatel chcete objednat jízdenku z ${fromCity} do ${toCity} na ${date}.`
+    const resp = await fetch(
+      `https://apps.kodim.cz/daweb/leviexpress/api/journey?fromCity=${fromCity}&toCity=${toCity}&date=${date}`
     );
+    if (!resp.ok) {
+      alert("Aj, karamba! Něco se pokazilo. Server se mnou nemluví 😢");
+      return;
+    }
+    const data = await resp.json();
+    const journey = data.results;
+    //TODO
+    console.log("Nalezený spoj:", journey);
   };
 
   return (
     <div className="journey-picker container">
       <h2 className="journey-picker__head">Kam chcete jet?</h2>
       <div className="journey-picker__body">
-        <form className="journey-picker__form" onSubmit={handleSubmit}>
+        <form
+          className="journey-picker__form"
+          onSubmit={handleSubmit}
+          disabled={fromCity === "" || toCity === "" || date === ""}
+        >
           <label>
             <div className="journey-picker__label">Odkud:</div>
             <select
