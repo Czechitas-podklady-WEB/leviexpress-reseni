@@ -2,7 +2,7 @@ import { useState } from "react";
 import { JourneyPicker } from "../../components/JourneyPicker";
 import { JourneyDetail } from "../../components/JourneyDetail";
 import { SelectedSeat } from "../../components/SelectedSeat";
-import "./style.css"
+import "./style.css";
 
 export const HomePage = () => {
   const [journey, setJourney] = useState(null);
@@ -11,9 +11,28 @@ export const HomePage = () => {
     setJourney(selectedJourney);
   };
 
-  const handleBuy = () => {
-    console.log("Objednávám.")
-  }
+  const handleBuy = async () => {
+    const resp = await fetch(
+      "https://apps.kodim.cz/daweb/leviexpress/api/reservation",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          action: "create",
+          seat: journey.autoSeat,
+          journeyId: journey.journeyId,
+        }),
+      }
+    );
+    if (!resp.ok) {
+      alert("Aj, karamba! Něco se pokazilo. Server se mnou nemluví 😢");
+      return;
+    }
+    const data = await resp.json();
+    console.log("Objednáno:", data);
+  };
 
   return (
     <main>
