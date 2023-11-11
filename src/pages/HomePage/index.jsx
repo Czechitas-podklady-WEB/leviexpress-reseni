@@ -25,7 +25,7 @@ export const HomePage = () => {
         },
         body: JSON.stringify({
           action: "create",
-          seat: journey.autoSeat,
+          seat: userSeat,
           journeyId: journey.journeyId,
         }),
       }
