@@ -1,9 +1,8 @@
 import "./style.css";
 
-export const SelectedSeat = ({ number }) => (
-  <div className="selected-seat container">
-    <h2>Vaše sedadlo</h2>
-    <svg className="seat seat--auto" viewBox="0 0 100 100" role="button">
+export const Seat = ({ number }) => {
+  return (
+    <svg className="seat" viewBox="0 0 100 100" role="button">
       <rect
         className="seat__rect"
         width="80"
@@ -18,5 +17,5 @@ export const SelectedSeat = ({ number }) => (
         {number}
       </text>
     </svg>
-  </div>
-);
+  );
+};
