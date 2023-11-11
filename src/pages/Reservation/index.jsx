@@ -1,7 +1,25 @@
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 export const Reservation = () => {
   const { id } = useParams();
+  const [reservation, setReservation] = useState(null);
+  
+  useEffect(() => {
+    const fetchReservation = async () => {
+      const resp = await fetch(
+        `https://apps.kodim.cz/daweb/leviexpress/api/reservation?id=${id}`
+      );
+      if (!resp.ok) {
+        alert("Aj, karamba! Něco se pokazilo. Server se mnou nemluví 😢");
+        return;
+      }
+      const data = await resp.json();      
+      console.log(data);
+    };
+
+    fetchReservation();
+  }, []);
 
   return (
     <div className="reservation container">
