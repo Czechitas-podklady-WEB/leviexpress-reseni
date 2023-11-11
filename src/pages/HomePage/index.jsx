@@ -49,6 +49,7 @@ export const HomePage = () => {
             seats={journey.seats}
             journeyId={journey.journeyId}
             selectedSeat={userSeat}
+            onSeatSelected={setUserSeat}
           />
           <div className="controls container">
             <button className="btn btn--big" type="button" onClick={handleBuy}>
