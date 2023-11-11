@@ -1,13 +1,17 @@
-import { JourneyPicker } from '../../components/JourneyPicker';
+import { useState } from "react";
+import { JourneyPicker } from "../../components/JourneyPicker";
 
 export const HomePage = () => {
-  const handleJourneyChange = (journey) => {
-    console.log("Nalezený spoj:", journey);
-  }
+  const [journey, setJourney] = useState(null);
+
+  const handleJourneyChange = (selectedJourney) => {
+    setJourney(selectedJourney);
+  };
 
   return (
     <main>
       <JourneyPicker onJourneyChange={handleJourneyChange} />
+      {journey && `Nalezeno spojení s id ${journey.journeyId}.`}
     </main>
   );
 };
