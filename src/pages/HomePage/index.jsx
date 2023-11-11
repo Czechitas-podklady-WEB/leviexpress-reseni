@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { JourneyPicker } from "../../components/JourneyPicker";
 import { JourneyDetail } from "../../components/JourneyDetail";
 import { SelectedSeat } from "../../components/SelectedSeat";
@@ -6,6 +7,7 @@ import "./style.css";
 
 export const HomePage = () => {
   const [journey, setJourney] = useState(null);
+  const navigate = useNavigate();
 
   const handleJourneyChange = (selectedJourney) => {
     setJourney(selectedJourney);
@@ -31,7 +33,8 @@ export const HomePage = () => {
       return;
     }
     const data = await resp.json();
-    console.log("Objednáno:", data);
+    const reservation = data.results;
+    navigate(`/reservation/${reservation.reservationId}`);
   };
 
   return (
