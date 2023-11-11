@@ -12,7 +12,7 @@ export const HomePage = () => {
   return (
     <main>
       <JourneyPicker onJourneyChange={handleJourneyChange} />
-      {journey && <JourneyDetail />}
+      {journey && <JourneyDetail journey={journey} />}
     </main>
   );
 };
